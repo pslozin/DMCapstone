@@ -10,11 +10,15 @@ import { useState } from 'react'
 
 const Container = styled.div`
     
+    
+`
+
+const Wrapper = styled.div`
 `
 
 const Form = styled.form`
   margin: 0 auto;
-  width: 100%;
+  width: 90%;
   max-width: 414px;
   padding: 1.3rem;
   display: flex;
@@ -54,10 +58,12 @@ const Button = styled.button`
   
 `
 const SaySignUp = styled.button`
+padding: 10px;
     color: gray;
     font-size: 15px;
     background-color: transparent;
     border: none;
+    cursor: pointer;
 
     :focus{
         outline: none;
@@ -131,7 +137,7 @@ export default function Loginform() {
 
             console.log("LOGIN INFO",userInfo)
             axios.post("/api/login", userInfo).then(function (response) {
-                if(response.data = [])
+                if(response.data.length === 0)
                 alert("USER NOT FOUND")
                 console.log("GOT BACK FROM SERVER", response.data)
             })
@@ -142,6 +148,10 @@ export default function Loginform() {
             {
             console.log("sign up")
             axios.post("/api/signup", userInfo).then(function (response) {
+                if(response.data === 'user registered')
+                alert('REGISTERED')
+                else if(response.data != 0 )
+                alert('already registerd')
                 console.log("GOT BACK FROM SERVER", response.data)
             })
         }
