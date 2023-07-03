@@ -28,12 +28,12 @@ export default function Cart() {
     const showCounter = useSelector(state => state.cartReducer.counter)
     const totalCartPrice = useSelector(state => state.cartReducer.total_price)
     const cartItems = useSelector(state => state.cartshowitems.pizzaItems)
-    const initialCartload = useSelector(state => state.cartshowitems.pizzaItems[0].firstload)
-    const secondCartload = useSelector(state => state.cartshowitems.pizzaItems[0].numberofloads)
+    //const initialCartload = useSelector(state => state.cartshowitems.pizzaItems[0].firstload)
+    //const secondCartload = useSelector(state => state.cartshowitems.pizzaItems[0].numberofloads)
 
     console.log("reducer STATE", cartItems)
 
-    console.log("HI PHILIP", initialCartload)
+    // console.log("HI PHILIP", initialCartload)
 
 
    

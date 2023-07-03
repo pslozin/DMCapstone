@@ -4,15 +4,15 @@ import { useSelector, useDispatch } from 'react-redux'
 
 
 const pizzaItems = [
-    {
-        id: 1000,
-        mname: 'Pizza' ,
-        firstload : true,
-        numberofloads : 0,
-        price: 0,
+    // {
+    //     id: 1000,
+    //     mname: 'Pizza' ,
+    //     firstload : true,
+    //     numberofloads : 0,
+    //     price: 0,
 
       
-    }
+    // }
 ]
 
 function deletefromobject(obj,id)
@@ -37,7 +37,7 @@ export default function cartshowitems(state = {pizzaItems}, action) {
         case 'ADD_TO_CART':
             console.log("ADDING REDUCER", action.items)
 
-            state.pizzaItems[0].firstload = false;
+           // state.pizzaItems[0].firstload = false;
             
             return {
                

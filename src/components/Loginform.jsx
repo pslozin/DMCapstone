@@ -4,6 +4,7 @@ import axios from 'axios'
 
 import React from 'react'
 import { useState } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
 
 
 
@@ -90,12 +91,16 @@ let signupInfo = {
 
 export default function Loginform() {
 
+    const showHistorybtn = useSelector(state => state.showhistoryreducer.showbtn)
+  
     const [showField, setShowField] = useState(false)
     const [signUpstatus, setSignUpstatus] = useState('sign up')
 
     const [userName, setUserName] = useState("")
     const [userPassword, setUserPassword] = useState("")
     const [confirmUserPassword, setConfirmUserPassword] = useState('')
+
+    const dispatch = useDispatch()
 
 
     function onSignUPclick(e) {
@@ -133,13 +138,18 @@ export default function Loginform() {
         userInfo.password = userPassword
 
         if (signUpstatus === "sign up") {
-            console.log("login")
-
-            console.log("LOGIN INFO",userInfo)
+            
             axios.post("/api/login", userInfo).then(function (response) {
                 if(response.data.length === 0)
                 alert("USER NOT FOUND")
+                else if(response.data === 'ok'){
+                    dispatch({ type: 'SHOW_BTN' })
+                    alert('LOGGED IN !!!!!')
+                }
+                else if(response.data === 'wrong password'){
+                    alert("wrong password")
                 console.log("GOT BACK FROM SERVER", response.data)
+                }
             })
         }
         else {

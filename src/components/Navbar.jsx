@@ -58,9 +58,9 @@ export default function Navbar() {
 
                 </Left>
                 <Center><Descr>Pizza Store</Descr></Center>
-                <Link to="/orderhistory" relative="path">
+                {/* <Link to="/orderhistory" relative="path">
                     order history
-                </Link>
+                </Link> */}
                 <Right>
                     <MenuItem>
                     

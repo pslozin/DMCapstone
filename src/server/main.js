@@ -49,43 +49,42 @@ app.post('/api/signup', (req, res) => {
   select id from store_users where user_name = '${req.body.username}'
 
 `).then(async (dbRes) => {
- 
-    if (dbRes[0].length != 0)
-    {
+
+    if (dbRes[0].length != 0) {
       console.log('USER EXIST')
       res.send(dbRes[0])
     }
-    else{
-//----------
-let hashedPassword = ''
-try {
+    else {
+      //----------
+      let hashedPassword = ''
+      try {
 
-  hashedPassword = await bcrypt.hash(req.body.password, 10)
+        hashedPassword = await bcrypt.hash(req.body.password, 10)
 
-  let passwrd = 'Slozin'
+        let passwrd = 'Slozin'
 
-  console.log("RECEIVED FROM FRONTEND", req.body.username, hashedPassword)
+        console.log("RECEIVED FROM FRONTEND", req.body.username, hashedPassword)
 
-}
-catch {
-  res.status(500)
-}
+      }
+      catch {
+        res.status(500)
+      }
 
-//-- INSERTING INTO DB
+      //-- INSERTING INTO DB
 
-sequelize.query(`
+      sequelize.query(`
   
 insert into store_users (user_name, user_password)
 values ('${req.body.username}','${hashedPassword}');
 
 `).then(() => {
-  console.log('User info iserteD !')
-  //res.json('SEEDED !!')
-})
+        console.log('User info iserteD !')
+        //res.json('SEEDED !!')
+      })
 
-res.status(200).send('user registered');
+      res.status(200).send('user registered');
 
-//-- END INSERTING TO DB
+      //-- END INSERTING TO DB
 
     }
   })
@@ -124,7 +123,7 @@ app.post('/api/login', (req, res) => {
   })
 })
 
-app.post('/api/sendorder',(req,res)=>{
+app.post('/api/sendorder', (req, res) => {
 
   sequelize.query(`
   
@@ -135,6 +134,18 @@ app.post('/api/sendorder',(req,res)=>{
 
 })
 
+
+app.post("/api/showorders", (req, res) => {
+
+  sequelize.query(`
+  
+  select * from orders where email = '${req.body.email}'
+  
+
+`).then((dbRes) => {res.send(dbRes[0])})
+
+  console.log("SHOW ORDERS for ", req.body.email)
+})
 
 
 

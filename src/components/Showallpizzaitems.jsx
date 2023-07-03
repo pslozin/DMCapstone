@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import axios from 'axios'
+import { useSelector, useDispatch } from 'react-redux'
 
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
@@ -40,7 +41,7 @@ const Card_and_login_container = styled.div`
 
 
 const Login_container = styled.div`
-    height: 8%;
+    height: 5%;
     background-color: lightblue;
 `
 
@@ -140,11 +141,13 @@ let pizzaObj = [
 ]
 
 
-
 export default function Showallpizzaitems() {
 
     const [pizzaMenu, setPizzaMenu] = useState({})
     const [items, setItems] = useState([])
+
+    const showHistorybtn = useSelector(state => state.showhistoryreducer.showbtn)
+  
 
     useEffect(() => {
 
@@ -170,7 +173,7 @@ export default function Showallpizzaitems() {
             }
         }
 
-        fetchData()
+        fetchData() 
 
     }, [pizzaMenu])
 
@@ -197,6 +200,7 @@ export default function Showallpizzaitems() {
                 <Login_container>
                     <Loginform></Loginform>
                 </Login_container>
+                {/* {showHistorybtn && <Showhistory></Showhistory>} */}
                 <Showhistory></Showhistory>
             </Card_and_login_container>
 
