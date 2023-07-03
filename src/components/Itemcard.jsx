@@ -113,6 +113,7 @@ export default function Itemcard({ item }) {
         }
 
         console.log("CLICKED ON ADD TO CARD", item.name)
+        
     }
 
 

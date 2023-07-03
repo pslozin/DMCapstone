@@ -15,17 +15,29 @@ function cartReducer(state = { counter: 0, total_price: 0 }, action) {
             console.log("ACTION QUANT", action.quant)
             return {
                 counter: state.counter - action.quant,
+                total_price: state.total_price,
 
             }
         case 'RESET':
             return {
-                counter: state.counter = 0
+                counter: state.counter = 0,
+                total_price: state.total_price = 0
+
             }
         case 'UPDATE_TOTAL_PRICE':
             console.log("REDUCER GRAND TOTAL", action.grtotal)
             return {
                 // total_price: state.total_price + action.ammount,
                 total_price: state.total_price + action.grtotal,
+                counter: state.counter,
+            }
+
+        case 'DECREASE_TOTAL_PRICE':
+            console.log("DECREASING GRAND BY", typeof action.grtotal)
+            console.log("GRAND BY", state.total_price)
+
+            return {
+                total_price: state.total_price - action.grtotal,
                 counter: state.counter,
             }
 

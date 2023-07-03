@@ -92,7 +92,7 @@ const CardContainer = styled.div`
 let pizzaObj = [
     {
         description: "Cheese",
-        id: '1',
+        id: 1,
         img: 'https://api.pizzahut.io/v1/content/en-in/in-1/images/pizza/margherita.90f9451fd66871fb6f9cf7d506053f18.1.jpg?width=550',
         name: "Margherita",
         price: 10,
@@ -100,7 +100,7 @@ let pizzaObj = [
     },
     {
         description: "Cheese",
-        id: '2',
+        id: 2,
         img: 'https://api.pizzahut.io/v1/content/en-in/in-1/images/pizza/margherita.90f9451fd66871fb6f9cf7d506053f18.1.jpg?width=550',
         name: "Regular",
         price: 10,
@@ -108,7 +108,7 @@ let pizzaObj = [
     },
     {
         description: "Cheese",
-        id: '3',
+        id: 3,
         img: 'https://api.pizzahut.io/v1/content/en-in/in-1/images/pizza/margherita.90f9451fd66871fb6f9cf7d506053f18.1.jpg?width=550',
         name: "Burger",
         price: 10,
@@ -116,7 +116,7 @@ let pizzaObj = [
     },
     {
         description: "Cheese",
-        id: '4',
+        id: 4,
         img: 'https://api.pizzahut.io/v1/content/en-in/in-1/images/pizza/margherita.90f9451fd66871fb6f9cf7d506053f18.1.jpg?width=550',
         name: "Russian pie",
         price: 10,
@@ -124,7 +124,7 @@ let pizzaObj = [
     },
     {
         description: "Cheese",
-        id: '5',
+        id: 5,
         img: 'https://api.pizzahut.io/v1/content/en-in/in-1/images/pizza/margherita.90f9451fd66871fb6f9cf7d506053f18.1.jpg?width=550',
         name: "Margherita",
         price: 10,
@@ -132,7 +132,7 @@ let pizzaObj = [
     },
     {
         description: "Cheese",
-        id: '6',
+        id: 6,
         img: 'https://api.pizzahut.io/v1/content/en-in/in-1/images/pizza/margherita.90f9451fd66871fb6f9cf7d506053f18.1.jpg?width=550',
         name: "Margherita",
         price: 10,
@@ -142,6 +142,8 @@ let pizzaObj = [
 
 
 export default function Showallpizzaitems() {
+
+    console.log("SHOWALL PIZZA ITEMS",typeof pizzaObj[0].id)
 
     const [pizzaMenu, setPizzaMenu] = useState({})
     const [items, setItems] = useState([])
@@ -188,7 +190,7 @@ export default function Showallpizzaitems() {
             </Filteritems>
 
             <CardContainer>
-                {items.map((item) => (
+                {pizzaObj.map((item) => (
                     <Itemcard item={item} />
                 ))
                 }

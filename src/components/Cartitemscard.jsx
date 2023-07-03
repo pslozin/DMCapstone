@@ -36,10 +36,13 @@ export default function Cartitemscard(obj) {
     const dispatch = useDispatch()
 
     const deleteFromCart = (e) => {
+        console.log("IS BUTTON ID STRING", typeof e.target.id)
+        
         console.log("DELETIN ID FROM CART", e.target.id)
         console.log("DELETIN QUANITY ID FROM CART", obj.items.quantity)
         dispatch({ type: 'DELETE_ITEM_FROM_CART', id: e.target.id })
         dispatch({ type: 'DECREMENT', quant: obj.items.quantity})
+        dispatch({ type: 'DECREASE_TOTAL_PRICE', grtotal: obj.items.price * obj.items.quantity})
 
     }
 
@@ -63,8 +66,7 @@ export default function Cartitemscard(obj) {
                 <Price>Price - 
                 {obj.items.price * obj.items.quantity}   
                 </Price>
-                <Total_price>Total - 
-                    {grand_total}
+                <Total_price>
                 </Total_price>
                 <Deletebutton id={obj.items.id} onClick={deleteFromCart}>
                         X

@@ -33,15 +33,13 @@ export default function Cart() {
 
     console.log("reducer STATE", cartItems)
 
-    // console.log("HI PHILIP", initialCartload)
-
-
-   
+  
     const dispatch = useDispatch()
 
 
     const emptyCart = () => {
         dispatch({ type: 'RESET' })
+        dispatch({ type: 'EMPTY_CART'})
     }
 
     return (
