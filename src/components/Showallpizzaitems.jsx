@@ -186,7 +186,7 @@ export default function Showallpizzaitems() {
 
             <CardContainer>
                 {pizzaObj.map((item) => (
-                    <Itemcard item={item} />
+                    <Itemcard key={item.id} item={item} />
                 ))
                 }
 
