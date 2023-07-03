@@ -34,14 +34,14 @@ const Card_and_login_container = styled.div`
    
     display:flex;
     flex-direction: column;
-     padding: 0px;
+     padding: 5px;
      width: 30%;
   
 `
 
 
 const Login_container = styled.div`
-    height: 5%;
+    height: 25%;
     background-color: lightblue;
 `
 
@@ -61,10 +61,6 @@ const Filteritems = styled.div`
     background-color: gray;
     
 `
-
-
-
-
 
 const Inputform = styled.form`
     
@@ -143,7 +139,6 @@ let pizzaObj = [
 
 export default function Showallpizzaitems() {
 
-    console.log("SHOWALL PIZZA ITEMS",typeof pizzaObj[0].id)
 
     const [pizzaMenu, setPizzaMenu] = useState({})
     const [items, setItems] = useState([])
@@ -202,8 +197,8 @@ export default function Showallpizzaitems() {
                 <Login_container>
                     <Loginform></Loginform>
                 </Login_container>
-                {/* {showHistorybtn && <Showhistory></Showhistory>} */}
-                <Showhistory></Showhistory>
+                {showHistorybtn && <Showhistory></Showhistory>}
+                
             </Card_and_login_container>
 
         </Wrapper>

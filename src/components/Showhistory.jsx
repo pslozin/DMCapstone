@@ -2,8 +2,10 @@ import React from 'react'
 import styled from 'styled-components'
 import axios from 'axios'
 import { useState, useEffect } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
 
 const Container = styled.div`
+    margin: 60px;
     background-color: lightskyblue;
     display: flex;
     flex-direction: column;
@@ -12,9 +14,7 @@ const Container = styled.div`
 `
 const Button = styled.button`
 
-
-
-    margin: 55px;
+    margin: 15px;
     
 `
 const Show_order_data = styled.div`
@@ -42,7 +42,7 @@ const philipdata = [
 const Constiner_history = styled.div`
 width: 90%;
 
-margin: 20px;
+margin: 40px;
  display: flex;
         flex-direction: column;
         justify-content: center;
@@ -87,32 +87,33 @@ export default function Showhistory() {
     const [orderHistory, setOrderhistoty] = useState([])
     const [showHistory, setShowHistory] = useState(false)
 
+    const useremail = useSelector(state => state.showhistoryreducer.email)
+
+    console.log("SHOW HISTORY USER EMAIL", useremail)
+
     let body = {
-        email: 'pslozin@gmail.com'
+        email: useremail
     }
 
-    const handleButtonClick = () => {
+    const handleButtonClick = (user) => {
+       
+        
+                console.log("SHOW HISTORY", body)
+                axios.post("/api/showorders", body).then(function (response) {
+                    if(response.data.length === 0 ){
+                        alert('no orders found')
+                    }
+                    else{
+                    console.log("GOT BACK FROM SERVER", response.data)
+                    setOrderhistoty(response.data)
+                    }
+    
+                })
+               
         setShowHistory(!showHistory)
     }
 
-    useEffect(() => {
-
-        const showOrderHistory = () => {
-            console.log("SHOW HISTORY", body)
-            axios.post("/api/showorders", body).then(function (response) {
-                if(response.data.length === 0 ){
-                    alert('no orders found')
-                }
-                else{
-                console.log("GOT BACK FROM SERVER", response.data)
-                setOrderhistoty(response.data)
-                }
-
-
-            })
-        }
-        showOrderHistory()
-    }, [orderItems])
+   
 
     console.log("BEFORE", orderHistory)
 
@@ -122,7 +123,8 @@ export default function Showhistory() {
     return (
 
         <Container>
-            <Button onClick={handleButtonClick}>show history</Button>
+            <Button onClick={handleButtonClick}>show order history: {useremail}</Button>
+
             {showHistory && <Wrapper>
             {orderHistory.map((item) => (
                 <Returndiv props={item} />

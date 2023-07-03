@@ -143,7 +143,9 @@ export default function Loginform() {
                 if(response.data.length === 0)
                 alert("USER NOT FOUND")
                 else if(response.data === 'ok'){
+                    console.log("USER LOGGED IN EMAIL",userName)
                     dispatch({ type: 'SHOW_BTN' })
+                    dispatch({ type: 'SET_EMAIL', email: userName})
                     alert('LOGGED IN !!!!!')
                 }
                 else if(response.data === 'wrong password'){
