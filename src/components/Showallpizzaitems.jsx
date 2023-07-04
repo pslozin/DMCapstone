@@ -30,13 +30,14 @@ const Container = styled.div`
 `
 
 const Card_and_login_container = styled.div`
-    background-color: greenyellow;
+
+    background-color: #f1f5eb;
    
     display:flex;
     flex-direction: column;
      padding: 5px;
      width: 30%;
-  
+     
 `
 
 
@@ -77,9 +78,10 @@ const CardContainer = styled.div`
     flex-wrap: wrap;
     flex: 1;
     width: 80%;
-    background-color: #6d3e3e;
+    background-color: #f8e6e6;
     margin: 1px;  
     padding: 1px;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
 
 `
 
@@ -185,7 +187,7 @@ export default function Showallpizzaitems() {
             </Filteritems>
 
             <CardContainer>
-                {pizzaObj.map((item) => (
+                {items.map((item) => (
                     <Itemcard key={item.id} item={item} />
                 ))
                 }

@@ -11,6 +11,7 @@ import Checkout from './Checkout';
 const Container = styled.div`
     margin: 10px;
     background-color: salmon;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
    
 `
 const Desc = styled.h1`
