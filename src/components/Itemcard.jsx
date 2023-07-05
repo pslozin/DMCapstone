@@ -156,9 +156,10 @@ const Div_for_button = styled.div`
     margin-left: 10px;
     margin-top: 5px;
 `
-export default function Itemcard({ item }) {
+export default function Itemcard({ item }, showCrt) {
 
-    // showCart.showCart(true)
+    
+   
     const [itemquantity, setItemquantity] = useState(0)
     const [showmodal, setShowmodal] = useState(false)
 
@@ -182,7 +183,6 @@ export default function Itemcard({ item }) {
 
     const updateCard = (ammount) => {
 
-        
 
         let itemsForCart = [
             {

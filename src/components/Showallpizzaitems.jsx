@@ -31,7 +31,7 @@ const Container = styled.div`
 
 const Card_and_login_container = styled.div`
 
-    background-color: #f1f5eb;
+    background-color: #f1f4ed;
    
     display:flex;
     flex-direction: column;
@@ -44,7 +44,7 @@ const Card_and_login_container = styled.div`
 
 
 const Login_container = styled.div`
-    height: 25%;
+    height: 7%;
     background-color: lightblue;
 `
 
@@ -151,6 +151,8 @@ export default function Showallpizzaitems() {
 
     const [showCart, setShowCart] = useState(false)
  
+  
+
     const showHistorybtn = useSelector(state => state.showhistoryreducer.showbtn)
   
 
@@ -201,7 +203,7 @@ export default function Showallpizzaitems() {
                 {items.filter((item)=>(
                     item.description.includes(searchItem)
                 )).map((item) => (
-                    <Itemcard key={item.id} item={item} showcart={setShowCart}/>
+                    <Itemcard key={item.id} item={item} />
                 ))
                 }
 

@@ -9,15 +9,18 @@ import { useSelector, useDispatch } from 'react-redux'
 import Checkout from './Checkout';
 
 const Container = styled.div`
+
     margin: 10px;
     background-color: #e4c8c5;
-    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    border: 1px #ffaa54 solid;
+    border-radius: 5px 25px 30px 45px;
+   
    
 `
 const Desc = styled.div`
 
     margin-left: 15px;
-    margin-top: 5px;
+    margin-top: 15px;
 
     
 `
@@ -25,7 +28,11 @@ const Desc = styled.div`
 const Cartitems = styled.div`
     
 `
-
+const Two_buttons = styled.div`
+    display: flex;
+    justify-content: space-between;
+    padding: 19px;
+`
 
 export default function Cart() {
 
@@ -51,20 +58,19 @@ export default function Cart() {
             <Desc>Items in Cart : {showCounter}</Desc>
             <Desc>Total Price : {totalCartPrice}</Desc>
             <Cartitems >
-                {
-                    
+                {                 
                 cartItems.map((item) => (
   
                     <Cartitemscard key={item.id} items={item}/>
 
-                ))}
-
-                
+                ))}           
             </Cartitems>
+            <Two_buttons>
             <Button onClick={emptyCart} variant="contained" size="small">
                 empty cart
             </Button>        
-            <Checkout props = {cartItems}/>        
+            <Checkout props = {cartItems}/>       
+            </Two_buttons> 
         </Container>
     )
 }

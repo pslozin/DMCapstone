@@ -64,6 +64,13 @@ function onCcChangeHandler(e) {
   
 
   const toggleModal = () => {
+    console.log(grand_total)
+    if(grand_total === 0 ) 
+    {
+    alert("O Items")
+    }
+   
+    else
     setModal(!modal);
   };
 
