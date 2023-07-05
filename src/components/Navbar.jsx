@@ -7,11 +7,14 @@ import Loginform from './Loginform';
 
 const Container = styled.div`
  
+    margin-top: 40px;
     height:60px;  
-    background-color: #7b4c4c;
+    background-color: #eabbbb;
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+    border-radius: 15px 50px 30px;
 
 `
-const Descr = styled.h1`
+const Descr = styled.div`
     
 `
 
@@ -48,7 +51,14 @@ const MenuItem = styled.div`
     cursor: pointer;
     margin-left: 25px;
 `
-
+const Logo = styled.img`
+    position: absolute;
+    left: 45%;
+    top: 3px;
+    z-index: 1;
+    height:135px;
+    width: 170px;
+`
 
 export default function Navbar() {
     return (
@@ -57,7 +67,11 @@ export default function Navbar() {
                 <Left>
 
                 </Left>
-                <Center><Descr>Pizza Store</Descr></Center>
+                <Center>
+                    <Logo src="http://balticmotors.us/pz.png"></Logo>
+                    <Descr></Descr>
+                    
+                    </Center>
                 {/* <Link to="/orderhistory" relative="path">
                     order history
                 </Link> */}

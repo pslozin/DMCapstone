@@ -10,11 +10,14 @@ import Checkout from './Checkout';
 
 const Container = styled.div`
     margin: 10px;
-    background-color: salmon;
+    background-color: #e4c8c5;
     box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
    
 `
-const Desc = styled.h1`
+const Desc = styled.div`
+
+    margin-left: 15px;
+    margin-top: 5px;
 
     
 `
@@ -58,7 +61,7 @@ export default function Cart() {
 
                 
             </Cartitems>
-            <Button onClick={emptyCart} variant="outlined" size="small">
+            <Button onClick={emptyCart} variant="contained" size="small">
                 empty cart
             </Button>        
             <Checkout props = {cartItems}/>        

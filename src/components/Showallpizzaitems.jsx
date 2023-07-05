@@ -36,7 +36,9 @@ const Card_and_login_container = styled.div`
     display:flex;
     flex-direction: column;
      padding: 5px;
-     width: 30%;
+     width: 23%;
+
+     
      
 `
 
@@ -59,7 +61,8 @@ const Wrapper = styled.div`
 
 const Filteritems = styled.div`
     width: 100%;
-    background-color: gray;
+    background-color: #f3e7e7;
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
     
 `
 
@@ -144,7 +147,10 @@ export default function Showallpizzaitems() {
 
     const [pizzaMenu, setPizzaMenu] = useState({})
     const [items, setItems] = useState([])
+    const [searchItem, setSearchItem] = useState('')
 
+    const [showCart, setShowCart] = useState(false)
+ 
     const showHistorybtn = useSelector(state => state.showhistoryreducer.showbtn)
   
 
@@ -176,26 +182,38 @@ export default function Showallpizzaitems() {
 
     }, [pizzaMenu])
 
+    const filterItems =(e) =>{
+        setSearchItem(e.target.value)
+       
+    }
+
     return (
 
         <Wrapper>
             <Filteritems>
                 <Inputform>
-                    <Searchfield>
+                    <Searchfield id="6" onChange ={filterItems} placeholder="enter item name">
                     </Searchfield>
                 </Inputform>
             </Filteritems>
 
             <CardContainer>
-                {items.map((item) => (
-                    <Itemcard key={item.id} item={item} />
+                {items.filter((item)=>(
+                    item.description.includes(searchItem)
+                )).map((item) => (
+                    <Itemcard key={item.id} item={item} showcart={setShowCart}/>
                 ))
                 }
+
+               {/* {items.map((item) => (
+                    <Itemcard key={item.id} item={item} />
+                ))
+                } */}
 
             </CardContainer>
 
             <Card_and_login_container>
-                <Cart></Cart>
+                 <Cart></Cart>
                 <Login_container>
                     <Loginform></Loginform>
                 </Login_container>

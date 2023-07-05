@@ -39,9 +39,9 @@ const Modal_info = styled.div`
     
 `
 const Modal_img = styled.img`
-      width:100%;
-                height:100%;
-                object-fit:cover;
+    width:100%;
+    height:100%;
+    object-fit:cover;
 `
 
 const Container = styled.div`
@@ -52,7 +52,9 @@ const Container = styled.div`
     min-height: 500px;
    
     padding: 2px;
-    margin: 2px;
+    margin: 5px;
+
+    border-radius: 15px 50px 30px;
 `
 
 const CardRight = styled.div`
@@ -156,6 +158,7 @@ const Div_for_button = styled.div`
 `
 export default function Itemcard({ item }) {
 
+    // showCart.showCart(true)
     const [itemquantity, setItemquantity] = useState(0)
     const [showmodal, setShowmodal] = useState(false)
 
@@ -178,6 +181,8 @@ export default function Itemcard({ item }) {
 
 
     const updateCard = (ammount) => {
+
+        
 
         let itemsForCart = [
             {

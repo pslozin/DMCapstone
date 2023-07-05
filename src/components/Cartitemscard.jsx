@@ -4,26 +4,38 @@ import styled from 'styled-components'
 import { useSelector, useDispatch } from 'react-redux'
 
 const Container = styled.div`
-    background-color: gray;
+    background-color: #f0e3e3;
+    margin: 15px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+    border-radius: 15px 50px 30px;
 `
 const Wrapper = styled.div`
     
 `
 const Itemname = styled.div`
+ margin: 3px;
+ margin-top: 13px;
+ padding: 15px;
     
 `
 const Quantity = styled.div`
-    
+    margin: 3px;
 `
 const Deletebutton = styled.button`
-    
+    margin: 10px 10px 10px 210px;
+    background-color: salmon;
+    color: white;
+    font-size: 16px;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    border-radius: 50%;
+    cursor: pointer;
 `
 const Price = styled.div`
-    
+     margin: 3px;
 `
 
 const Total_price = styled.div`
-
+ margin: 3px;
 `
 let total_checkout_price = 0;
 
@@ -60,12 +72,14 @@ export default function Cartitemscard(obj) {
         <Container>
             {!initialCartload && <Itemname>{obj.items.name}
 
-                <Quantity>
+                <Quantity>Quantity - 
                     {obj.items.quantity}               
                 </Quantity>
-                <Price>Price - 
-                {obj.items.price * obj.items.quantity}   
+                <Price>Price per item - ${obj.items.price} </Price>
+                <Price>Total Price - 
+                ${obj.items.price * obj.items.quantity}   
                 </Price>
+               
                 <Total_price>
                 </Total_price>
                 <Deletebutton id={obj.items.id} onClick={deleteFromCart}>
